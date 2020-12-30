@@ -12,14 +12,18 @@ initialize a global count
 count iterated up to count => clear interval
 ***********************************************************************/
 let count = 0
-let intervalCount = (cb, ms, num) =>{
-    count ++
-    let int = setInterval(cb, ms)
-  if (count === num) {
-    clearInterval(int)
-  }
-}
 
+let intervalCount = (cb, ms, num) =>{
+
+    let int = setInterval(function(){
+      count++;                          // increment towards num
+      cb();                             // call callback
+
+      if (count === num) {              // set stop condition
+        clearInterval(int)
+      }
+    }, ms);
+}
 
 intervalCount(function() {
     console.log('hi');
