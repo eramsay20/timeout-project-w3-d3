@@ -8,8 +8,18 @@ Hint: use closures and setTimeout to your advantage
 
 In addition to Mocha, we recommend that you test your code manually using
 node with the examples below.
-***********************************************************************/
 
+// args: cb, ms
+// post(cb, ms) ==> function
+outer function
+innerfunction === setTimeout
+***********************************************************************/
+const postpone = (cb, ms) => {
+  let innerFunc = () =>{
+    setTimeout(cb, ms);
+  }
+  return innerFunc
+}
 
 
 const sayHello = () => console.log('hi');
