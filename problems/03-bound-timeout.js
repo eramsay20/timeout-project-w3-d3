@@ -7,7 +7,14 @@ bound callback.
 In addition to Mocha, we recommend that you test your code manually using
 node with the examples below.
 do do do
-Examples:
+pseudocode: outer function take in cb, time in milliseconds, and  an object
+***********************************************************************/
+const boundTimeout= (cb, ms, obj)=>{
+  let name = obj.name
+let bound = cb.bind(obj)
+  setTimeout(cb, ms)
+}
+
 
 function bark() {
   console.log(this.name + ' barks');
@@ -24,10 +31,6 @@ boundTimeout(bark, 500, dog); // prints 'Fido barks' after 500 ms
 boundTimeout(bark, 500, cat); // prints 'Sennacy barks' after 500 ms
 boundTimeout(meow, 500, dog); // prints 'Fido meowsss' after 500 ms
 boundTimeout(meow, 500, cat); // prints 'Sennacy meowsss' after 500 ms
-***********************************************************************/
-
-
-
 /**************DO NOT MODIFY ANYTHING UNDER THIS  LINE*****************/
 try {
   module.exports = boundTimeout;
